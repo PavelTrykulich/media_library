@@ -19,7 +19,7 @@ class CreateFilesTable extends Migration
             $table->char('title',60)->unique();
             $table->string('description')->nullable();
             $table->char('short_description',60)->nullable();
-            $table->date('date_download');
+            //$table->date('date_download');
             $table->date('date_last_eval')->nullable();
             $table->string('path_to_file');
             $table->integer('user_id');

@@ -10,13 +10,17 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public $primaryKey='user_id';
+
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'second_name','first_name','patronymic','path_to_photo',
+        'phone','description','date_birth', 'email', 'password',
     ];
 
     /**
@@ -36,4 +40,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function files()
+    {
+        return $this->hasMany('App\File','user_id','user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment','user_id','user_id');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany('App\Rating','user_id','user_id');
+    }
 }
