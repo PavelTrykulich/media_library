@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
-    protected $table='files';
-    public $primaryKey='file_id';
-    protected $fillable=['user_id','title','type_file','description','short_description','date_last_eval','path_to_file'];
+    protected $table = 'files';
+    public $primaryKey = 'file_id';
+    protected $fillable = ['user_id','title','type_file','description','short_description','date_last_eval','path_to_file'];
 
     public function user()
     {
@@ -40,5 +40,8 @@ class File extends Model
         return $this->hasOne('App\Photo','file_id','file_id');
     }
 
+    public function getGenres($file){
+
+    }
 
 }
