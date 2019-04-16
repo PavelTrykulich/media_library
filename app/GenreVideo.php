@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class GenreVideo extends Model
 {
-    protected $table='genre_videos';
-    public $primaryKey='genre_video_id';
     protected $fillable=['title'];
 
     public function videos()

@@ -17,12 +17,12 @@
 
         @foreach($formats as $format)
             <tr>
-                <th scope="row">{{$format->format_audio_id}}</th>
+                <th scope="row">{{$format->id}}</th>
                 <td>{{$format->title}}</td>
                 <td>
-                    <a href="{{Route('format_audios.edit',$format->format_audio_id)}}" class="btn btn-warning">Update</a>
+                    <a href="{{Route('format_audios.edit',$format->id)}}" class="btn btn-warning">Update</a>
 
-                    <form action="{{Route('format_audios.destroy',$format->format_audio_id)}}"  method="post" class="btn" >
+                    <form action="{{Route('format_audios.destroy',$format->id)}}"  method="post" class="btn" >
                         @method('delete')
                         @csrf
                         <button class="btn btn-danger">Delete</button>

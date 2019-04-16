@@ -14,7 +14,7 @@ class CreateFormatVideosTable extends Migration
     public function up()
     {
         Schema::create('format_videos', function (Blueprint $table) {
-            $table->increments('format_video_id');
+            $table->increments('id');
             $table->char('title',20)->unique();
             $table->timestamps();
         });

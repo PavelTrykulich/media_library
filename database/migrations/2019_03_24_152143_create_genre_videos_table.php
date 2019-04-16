@@ -14,7 +14,7 @@ class CreateGenreVideosTable extends Migration
     public function up()
     {
         Schema::create('genre_videos', function (Blueprint $table) {
-            $table->increments('genre_video_id');
+            $table->increments('id');
             $table->char('title',20)->unique();
             $table->timestamps();
         });

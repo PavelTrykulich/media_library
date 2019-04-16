@@ -6,7 +6,7 @@
         @include('admin.errors')
         <div class="row">
             <div class="col-md-12">
-                <form action="{{Route('genre_videos.update',$genre->genre_video_id)}}"  method="post" >
+                <form action="{{Route('genre_videos.update',$genre->id)}}"  method="post" >
                     @method('put')
                     @csrf
                     <div class="form-group">

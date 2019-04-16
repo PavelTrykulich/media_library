@@ -19,8 +19,9 @@ class CreateRatingsTable extends Migration
             $table->integer('file_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('users');
-            $table->foreign('file_id')->references('file_id')->on('files')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+            $table->primary(['user_id','file_id']);
         });
     }
 

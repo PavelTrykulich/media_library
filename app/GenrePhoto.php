@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class GenrePhoto extends Model
 {
     protected $table='genre_photos';
-    public $primaryKey='genre_photo_id';
     protected $fillable=['title'];
 
     public function photos()

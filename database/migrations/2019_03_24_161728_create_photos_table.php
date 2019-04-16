@@ -14,13 +14,13 @@ class CreatePhotosTable extends Migration
     public function up()
     {
         Schema::create('photos', function (Blueprint $table) {
-            $table->bigIncrements('photo_id');
+            $table->increments('id');
             $table->integer('file_id');
             $table->integer('format_photo_id');
             $table->timestamps();
 
-            $table->foreign('format_photo_id')->references('format_photo_id')->on('format_photos');
-            $table->foreign('file_id')->references('file_id')->on('files')->onDelete('cascade');
+            $table->foreign('format_photo_id')->references('id')->on('format_photos');
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
         });
     }
 

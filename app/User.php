@@ -10,7 +10,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public $primaryKey='user_id';
 
 
     /**
@@ -19,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'second_name','first_name','patronymic','path_to_photo',
+        'second_name','first_name','patronymic','avatar',
         'phone','description','date_birth', 'email', 'password',
     ];
 
@@ -44,16 +43,16 @@ class User extends Authenticatable
 
     public function files()
     {
-        return $this->hasMany('App\File','user_id','user_id');
+        return $this->hasMany('App\File');
     }
 
     public function comments()
     {
-        return $this->hasMany('App\Comment','user_id','user_id');
+        return $this->hasMany('App\Comment');
     }
 
     public function ratings()
     {
-        return $this->hasMany('App\Rating','user_id','user_id');
+        return $this->hasMany('App\Rating');
     }
 }

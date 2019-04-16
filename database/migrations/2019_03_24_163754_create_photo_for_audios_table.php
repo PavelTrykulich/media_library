@@ -18,9 +18,9 @@ class CreatePhotoForAudiosTable extends Migration
             $table->integer('file_id');
             $table->timestamps();
 
-            $table->primary('file_id');
-            $table->foreign('file_id')->references('file_id')->on('files')->onDelete('cascade');
-            $table->foreign('audio_id')->references('audio_id')->on('audios')->onDelete('cascade');
+            $table->primary(['file_id','audio_id']);
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+            $table->foreign('audio_id')->references('id')->on('audios')->onDelete('cascade');
         });
     }
 

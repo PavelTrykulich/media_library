@@ -16,10 +16,10 @@ class CreateGenreForAudiosTable extends Migration
         Schema::create('genre_for_audios', function (Blueprint $table) {
             $table->integer('genre_audio_id');
             $table->integer('audio_id');
-            $table->timestamps();
 
-            $table->foreign('genre_audio_id')->references('genre_audio_id')->on('genre_audios');
-            $table->foreign('audio_id')->references('audio_id')->on('audios')->onDelete('cascade') ;
+            $table->foreign('genre_audio_id')->references('id')->on('genre_audios');
+            $table->foreign('audio_id')->references('id')->on('audios')->onDelete('cascade');
+            $table->primary(['genre_audio_id','audio_id']);
         });
     }
 

@@ -26,6 +26,7 @@ class FormatAudioController extends Controller
      */
     public function create()
     {
+
         return view('admin.formats.audio.create');
     }
 
@@ -55,7 +56,7 @@ class FormatAudioController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

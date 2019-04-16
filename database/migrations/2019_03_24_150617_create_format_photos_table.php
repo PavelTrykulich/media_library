@@ -14,7 +14,7 @@ class CreateFormatPhotosTable extends Migration
     public function up()
     {
         Schema::create('format_photos', function (Blueprint $table) {
-            $table->increments('format_photo_id');
+            $table->increments('id');
             $table->char('title',20)->unique();
             $table->timestamps();
 

@@ -14,7 +14,7 @@ class CreateGenreAudiosTable extends Migration
     public function up()
     {
         Schema::create('genre_audios', function (Blueprint $table) {
-            $table->increments('genre_audio_id');
+            $table->increments('id');
             $table->char('title',20)->unique();
             $table->timestamps();
         });

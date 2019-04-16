@@ -61,14 +61,14 @@
 
         <div class="container">
 
-            <div class="row">
+            {{--<div class="row">
 
                 @foreach($files as $file)
                     <div class="col-md-4">
                         <h2>{{$file->title}}</h2>
 
                         <p>{{$file->short_description}}</p>
-                        {{--<p>{{$file->photo->genrePhotos}}</p>--}}
+                        --}}{{--<p>{{$file->photo->genrePhotos}}</p>--}}{{--
                         @foreach($file->photo->genrePhotos as $title)
                             <p>{{$title->title}}</p>
                         @endforeach
@@ -77,7 +77,7 @@
                     </div>
                 @endforeach
 
-            </div>
+            </div>--}}
 
 
         </div>

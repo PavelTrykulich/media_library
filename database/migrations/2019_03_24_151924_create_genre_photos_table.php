@@ -14,7 +14,7 @@ class CreateGenrePhotosTable extends Migration
     public function up()
     {
         Schema::create('genre_photos', function (Blueprint $table) {
-            $table->increments('genre_photo_id');
+            $table->increments('id');
             $table->char('title',20)->unique();
             $table->timestamps();
         });

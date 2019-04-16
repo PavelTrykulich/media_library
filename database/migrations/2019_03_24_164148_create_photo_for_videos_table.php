@@ -18,9 +18,9 @@ class CreatePhotoForVideosTable extends Migration
             $table->integer('file_id');
             $table->timestamps();
 
-            $table->primary('file_id');
-            $table->foreign('file_id')->references('file_id')->on('files')->onDelete('cascade');
-            $table->foreign('video_id')->references('video_id')->on('videos')->onDelete('cascade');
+            $table->primary(['file_id','video_id']);
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
         });
     }
 

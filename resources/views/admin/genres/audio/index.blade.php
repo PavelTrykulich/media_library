@@ -17,12 +17,12 @@
 
         @foreach($genres as $genre)
             <tr>
-                <th scope="row">{{$genre->genre_audio_id}}</th>
+                <th scope="row">{{$genre->id}}</th>
                 <td>{{$genre->title}}</td>
                 <td>
-                    <a href="{{Route('genre_audios.edit',$genre->genre_audio_id)}}" class="btn btn-warning">Update</a>
+                    <a href="{{Route('genre_audios.edit',$genre->id)}}" class="btn btn-warning">Update</a>
 
-                    <form action="{{Route('genre_audios.destroy',$genre->genre_audio_id)}}"  method="post" class="btn" >
+                    <form action="{{Route('genre_audios.destroy',$genre->id)}}"  method="post" class="btn" >
                         @method('delete')
                         @csrf
                         <button class="btn btn-danger">Delete</button>

@@ -16,10 +16,10 @@ class CreateGenreForVideosTable extends Migration
         Schema::create('genre_for_videos', function (Blueprint $table) {
             $table->integer('genre_video_id');
             $table->integer('video_id');
-            $table->timestamps();
 
-            $table->foreign('genre_video_id')->references('genre_video_id')->on('genre_videos');
-            $table->foreign('video_id')->references('video_id')->on('videos')->onDelete('cascade') ;
+            $table->foreign('genre_video_id')->references('id')->on('genre_videos');
+            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
+            $table->primary(['genre_video_id','video_id']);
         });
     }
 

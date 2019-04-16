@@ -14,7 +14,7 @@ class CreateFormatAudiosTable extends Migration
     public function up()
     {
         Schema::create('format_audios', function (Blueprint $table) {
-            $table->increments('format_audio_id');
+            $table->increments('id');
             $table->char('title',20)->unique();
             $table->timestamps();
         });
