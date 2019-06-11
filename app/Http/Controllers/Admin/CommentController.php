@@ -1,23 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Author;
+namespace App\Http\Controllers\Admin;
 
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\File;
-class ProfileController extends Controller
+
+class CommentController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +15,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('author.profile');
+        $comments = Comment::all();
+        return view('admin.comment.index',compact('comments'));
     }
 
     /**
@@ -35,7 +26,6 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -46,7 +36,6 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-
     }
 
     /**
@@ -68,19 +57,26 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('admin.comment.edit',compact('comment'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, $id)
-    {
-        //
+    {$this->validate($request, [
+        'text_comment' =>  'required'
+    ]);
+
+        $comment = Comment::find($id);
+        $comment->update(['text_comment' => $request->text_comment]);
+        return redirect()->route('comments.index');
     }
 
     /**
@@ -91,6 +87,7 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::find($id)->delete();
+        return redirect()->route('comments.index');
     }
 }

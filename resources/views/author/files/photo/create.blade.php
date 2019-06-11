@@ -11,7 +11,7 @@
                     @csrf
                     <div class="form-group">
                         <label>title</label>
-                        <input type="text" class="form-control" name="title">
+                        <input type="text" class="form-control" name="title" value="{{old('title')}}">
                         <br>
                         <label>description</label>
                         <input type="text" class="form-control" name="description">

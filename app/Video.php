@@ -21,6 +21,11 @@ class Video extends Model
 
     public function format()
     {
-        return $this->belongsTo('App\FormatVideo');
+        return $this->belongsTo('App\FormatVideo','format_video_id');
+    }
+
+    public function photos()
+    {
+        return $this->belongsToMany('App\Photo','photo_for_videos');
     }
 }

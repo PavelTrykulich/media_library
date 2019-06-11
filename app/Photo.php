@@ -10,7 +10,7 @@ class Photo extends Model
 
     public function file()
     {
-        return $this->belongsTo('App\File','file_id','file_id');
+        return $this->belongsTo('App\File');
     }
 
     public function genres()
@@ -20,6 +20,16 @@ class Photo extends Model
 
     public function format()
     {
-        return $this->belongsTo('App\FormatPhoto','format_photo_id','format_photo_id');
+        return $this->belongsTo('App\FormatPhoto','format_photo_id','id');
+    }
+
+    public function audios()
+    {
+        return $this->belongsToMany('App\Audio','photo_for_audios');
+    }
+
+    public function videos()
+    {
+        return $this->belongsToMany('App\Video','photo_for_videos');
     }
 }

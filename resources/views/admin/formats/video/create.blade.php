@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h3>Create format</h3>
+        <h3>Create format video</h3>
         @include('admin.errors')
         <div class="row">
             <div class="col-md-12">

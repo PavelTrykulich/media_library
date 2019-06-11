@@ -21,6 +21,12 @@ class Audio extends Model
 
     public function format()
     {
-        return $this->belongsTo('App\FormatAudio');
+        return $this->belongsTo('App\FormatAudio','format_audio_id','id');
     }
+
+    public function photos()
+    {
+        return $this->belongsToMany('App\Photo','photo_for_audios');
+    }
+
 }

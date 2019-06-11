@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Files;
+namespace App\Http\Controllers\Author;
 
+use App\File;
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class VideoController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,9 +36,16 @@ class VideoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request, $file_id)
+    {//valid
+
+        Comment::create([
+            'text_comment' => $request->text_comment,
+            'user_id' => Auth::id(),
+            'file_id' => $file_id,
+        ]);
+
+        return back();
     }
 
     /**
@@ -80,6 +90,7 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::find($id)->delete();
+        return back();
     }
 }

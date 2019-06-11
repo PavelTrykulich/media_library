@@ -13,8 +13,20 @@
 
     </div>
 
-    <a href="{{Route('photo.edit',$photo->id)}}" class="btn btn-warning">Update</a>
 
+
+
+    @foreach($genres as $genre)
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="{{$genre->title }}" name='genres[]' value="{{$genre->id}}"
+                    {{in_array($genre->id,$genres_checked) ? 'checked' : ''}}>
+            <label class="custom-control-label" for="{{$genre->title }}" >{{$genre->title }}</label>
+            <br>
+        </div>
+    @endforeach
+
+
+    <a href="{{Route('photo.edit',$photo->id)}}" class="btn btn-warning">Update</a>
     <form action="{{Route('photo.destroy',$photo->id)}}"  method="post" class="btn" >
         @method('delete')
         @csrf

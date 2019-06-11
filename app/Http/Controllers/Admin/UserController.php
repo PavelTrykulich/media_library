@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(9);
         return view('admin.users.index',compact('users'));
     }
 
@@ -49,7 +50,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('admin.users.show',compact('user'));
+        $files = File::where('user_id',$user->id)->paginate(6);
+        $topThreeFiles = $user->topThreeFileUser();
+        return view('admin.users.show',compact('user','files','topThreeFiles'));
     }
 
     /**
@@ -78,10 +81,8 @@ class UserController extends Controller
             'second_name' => $request->second_name,
             'first_name' => $request->first_name,
             'patronymic' => $request->patronymic,
-            'email' => $request->email,
-            'path_to_photo' => $request->path_to_photo,
             'description' => $request->description,
-            'date_birth' => $request->date_birth
+            'date_birth' => $request->date_birth,
         ]);
         return redirect()->route('users.index');
     }

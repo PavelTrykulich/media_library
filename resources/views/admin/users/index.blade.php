@@ -1,46 +1,52 @@
 @extends('admin.layouts.layout')
 
 @section('content')
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">second_name</th>
-            <th scope="col">first_name</th>
-            <th scope="col">patronymic</th>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                @foreach($users as $user)
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
 
-            <th scope="col">email</th>
-            <th scope="col">path_to_photo</th>
-            <th scope="col">description</th>
-            <th scope="col">date_birth</th>
-            <th scope="col"></th>
+                            @if(isset($user->avatar))
+                                <img class="card-img-top" width="349" src="{{asset('avatars/' . $user->avatar)}}" alt="Card image cap">
+                            @else
+                                <img class="card-img-top" src="http://www.mrgood1.com/web/img/thumb.jpg" alt="Card image cap">
+                            @endif
+                            <div class="card-body">
+                                <h4>{{$user->getFullNameUser()}}</h4>
+                                <h4>{{$user->email}}</h4>
 
-        </tr>
-        </thead>
-        <tbody>
 
-        @foreach($users as $user)
-            <tr>
-                <th scope="row">{{$user->id}}</th>
-                <td>{{$user->second_name}}</td>
-                <td>{{$user->first_name}}</td>
-                <td>{{$user->patronymic}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->path_to_photo}}</td>
-                <td>{{$user->description}}</td>
-                <td>{{$user->date_birth}}</td>
-                <td>
 
-                    <a href="{{Route('users.show',$user->id)}}" class="btn btn-info">Show</a>
+                                <div class="d-flex justify-content-between align-items-center">
 
-                </td>
 
-            </tr>
-        @endforeach
-
-        </tbody>
-    </table>
+                                    <div class="btn-group">
+                                        <a href="{{Route('users.show',$user->id)}}" class="btn btn-info">Show</a>
+                                    </div>
+                                    <small class="text-muted">
+                                        @isset($user->created_at)
+                                            {{$user->created_at->format('d.m.Y')}}
+                                        @endisset
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="pagination row justify-content-center">
+            {{$users->links()}}
+        </div>
+    </div>
 
 
 
 @endsection
+
+
+
+
+

@@ -26,7 +26,6 @@ class FormatAudioController extends Controller
      */
     public function create()
     {
-
         return view('admin.formats.audio.create');
     }
 
@@ -42,9 +41,7 @@ class FormatAudioController extends Controller
         $this->validate($request, [
             'title' =>  'required|unique:format_photos||max:20'
         ]);
-
         FormatAudio::create(['title' => $request->title]);
-
         return redirect()->route('format_audios.index');
     }
 

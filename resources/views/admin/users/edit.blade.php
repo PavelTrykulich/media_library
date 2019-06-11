@@ -1,33 +1,50 @@
 @extends('admin.layouts.layout')
 
 @section('content')
+    <p class="h4 text-center my-3">Update user</p>
    <form action="{{Route('users.update',$user->id)}}" method="post" >
        @method('put')
        @csrf
-       <div class="form-group">
-           <h2>second_name</h2>
-           <input type="text" class="form-control" name="second_name" value="{{$user->second_name}}">
-           <br>
-           <h2>first_name</h2>
-           <input type="text" class="form-control" name="first_name" value="{{$user->first_name}}">
-           <br>
-           <h2>patronymic</h2>
-           <input type="text" class="form-control" name="patronymic" value="{{$user->patronymic}}">
-           <br>
-           <h2>email</h2>
-           <input type="email" class="form-control" name="email" value="{{$user->email}}">
-           <br>
-           <h2>path_to_photo</h2>
-           <input type="text" class="form-control" name="path_to_photo" value="{{$user->path_to_photo}}">
-           <br>
-           <h2>description</h2>
-           <input type="text" class="form-control" name="description" value="{{$user->description}}">
-           <br>
-           <h2>date_birth</h2>
-           <input type="date" class="form-control" name="date_birth" value="{{$user->date_birth}}">
-           <br>
+       <div class="form-group row">
+           <label for="name" class="col-md-4 col-form-label text-md-right">First name</label>
+           <div class="col-md-6">
+               <input id="name" type="text" class="form-control" name="first_name" value="{{ $user->first_name }}" required autofocus>
+           </div>
+       </div>
 
-           <button class="btn btn-success">Update</button>
+       <div class="form-group row">
+           <label for="name" class="col-md-4 col-form-label text-md-right">Second name</label>
+           <div class="col-md-6">
+               <input id="name" type="text" class="form-control" name="second_name" value="{{ $user->second_name }}" required autofocus>
+           </div>
+       </div>
+
+       <div class="form-group row">
+           <label for="name" class="col-md-4 col-form-label text-md-right">Patronymic</label>
+           <div class="col-md-6">
+               <input id="name" type="text" class="form-control" name="patronymic" value="{{ $user->patronymic }}" required autofocus>
+           </div>
+       </div>
+
+       <div class="form-group row">
+           <label for="name" class="col-md-4 col-form-label text-md-right">Description</label>
+           <div class="col-md-6">
+               <textarea id="name" type="text" class="form-control" name="description"  autofocus>{{ $user->description }}</textarea>
+           </div>
+       </div>
+
+       <div class="form-group row">
+           <label for="example-date-input" class="col-md-4 col-form-label text-md-right">Date birth</label>
+           <div class="col-md-6">
+               <input class="form-control" type="date" name="date_birth" value="{{ $user->date_birth }}" id="example-date-input">
+           </div>
+       </div>
+
+       <div class="form-group row mb-0">
+           <div class="col-md-6 offset-md-4">
+               <button type="submit" class="btn btn-primary">Update
+               </button>
+           </div>
        </div>
    </form>
 

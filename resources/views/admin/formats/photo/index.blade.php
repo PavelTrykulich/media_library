@@ -1,11 +1,11 @@
 @extends('admin.layouts.layout')
 
 @section('content')
-
-    <a href="{{Route('format_photos.create')}}" class="btn btn-success">Create</a>
+    <h3 class="text-center">Photo`s formats</h3>
+    <a href="{{Route('format_photos.create')}}" class="btn btn-success my-2">Create</a>
 
     <table class="table">
-        <thead class="thead-dark">
+        <thead class="thead-dark text-center">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
@@ -13,7 +13,7 @@
 
         </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
 
         @foreach($formats as $format)
             <tr>

@@ -10,6 +10,6 @@ class GenreVideo extends Model
 
     public function videos()
     {
-        return $this->belongsToMany('App\Video','genre_for_videos','genre_video_id','video_id');
+        return $this->belongsToMany('App\Video');
     }
 }

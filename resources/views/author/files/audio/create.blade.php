@@ -20,7 +20,7 @@
                         <input type="text" class="form-control" name="short_description">
                         <br>
                         <label>path_to_file</label>
-                        <input type="file" name="path_to_file">
+                        <input class="form-control-file" type="file" name="path_to_file">
                         <br>
                         <label>Genres</label>
 

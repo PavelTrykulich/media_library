@@ -73,6 +73,52 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        //Connection for role
+
+        'guest_pgsql' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE_GUEST', 'forge'),
+            'username' => env('DB_USERNAME_GUEST', 'forge'),
+            'password' => env('DB_PASSWORD_GUEST', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
+        'author_pgsql' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE_AUTHOR', 'forge'),
+            'username' => env('DB_USERNAME_AUTHOR', 'forge'),
+            'password' => env('DB_PASSWORD_AUTHOR', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
+        'admin_pgsql' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE_ADMIN', 'forge'),
+            'username' => env('DB_USERNAME_ADMIN', 'forge'),
+            'password' => env('DB_PASSWORD_ADMIN', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
+
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'host' => env('DB_HOST', 'localhost'),

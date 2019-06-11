@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -55,4 +56,31 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Rating');
     }
+
+    public function getFullNameUser()
+    {
+        return $this->first_name . $this->second_name;
+    }
+
+    public function topThreeFileUser(){
+        $topThreeFilesUser =File::selectRaw('files.*, avg(ratings.rating) as avr')
+            ->join('ratings','ratings.file_id','=','files.id')
+            ->where('files.user_id',$this->id)
+            ->groupBy('files.id')
+            ->orderBy('avr','desc')
+            ->limit(3)
+            ->get();
+        return $topThreeFilesUser;
+    }
+
+    public function avg_ret_author(){
+       $rating =  DB::select('select * from avg_rat_auth(?)',[$this->id]);
+       $rating = array_shift($rating);
+       return $rating->avg_rat_auth;
+    }
+
+
+
+
+
 }

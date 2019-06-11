@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,9 +49,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            /*'name' => ['required', 'string', 'max:255'],*/
+            'first_name' => ['required', 'string', 'max:255'],
+            'second_name' => ['required', 'string', 'max:255'],
+            'patronymic' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:900'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'avatar' => ['image'],
         ]);
     }
 
@@ -63,18 +67,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        $name = 'avatar.png';
+        if (isset($data['avatar'])){
         $avatar = $data['avatar'];
         $format = $avatar->extension();
         $name = time() . $data['second_name'] . $data['first_name'] .'.'. $format;
-        $avatar->move(public_path('/avatars'),$name);
-        //dd($name);
+        $avatar->move(public_path('/avatars'),$name);}
 
         return User::create([
             'second_name' => $data['second_name'],
             'first_name' => $data['first_name'],
             'patronymic' => $data['patronymic'],
             'email' => $data['email'],
+            'description' => $data['description'],
+            'date_birth' => $data['date_birth'],
             'password' => Hash::make($data['password']),
             'avatar' => $name,
         ]);
