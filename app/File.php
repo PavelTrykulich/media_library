@@ -13,10 +13,10 @@ class File extends Model
         'short_description', 'date_last_eval', 'path_to_file', 'size'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
+        public function user()
+        {
+            return $this->belongsTo('App\User');
+        }
 
     public function comments()
     {
